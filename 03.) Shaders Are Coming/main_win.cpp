@@ -9,7 +9,7 @@ int main()
 {
 	bool bFullScreen = MessageBox(NULL, "Would you like to run in fullscreen?", "Fullscreen", MB_ICONQUESTION | MB_YESNO) == IDYES;
 	
-	if (openGLWindow.CreateOpenGLWindow("01.) Creating OpenGL 4.2 Window with SDL - Tutorial by Michal Bubnar (www.mbsoftworks.sk)", bFullScreen, 3, 3))
+	if (openGLWindow.CreateOpenGLWindow("03.) Shaders Are Coming - Tutorial by Michal Bubnar (www.mbsoftworks.sk)", bFullScreen, 3, 3))
 		appMain.AppBody();
 
 	return 0;
