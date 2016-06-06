@@ -203,6 +203,11 @@ void CSDLOpenGLWindow::ResetFPS()
 	fFrameInterval = 0.0f;
 }
 
+bool CSDLOpenGLWindow::IsFPSUpdated()
+{
+	return m_bFPSUpdated;
+}
+
 //--------------------------------------------------------------------
 /// \brief Updates and recalculates FPS counter after frame
 //--------------------------------------------------------------------
@@ -213,11 +218,13 @@ void CSDLOpenGLWindow::_UpdateFPS()
 	clock_t tCur = clock();
 	fFrameInterval = float(tCur - tLastFrame) / float(CLOCKS_PER_SEC);
 	tLastFrame = tCur;
+	m_bFPSUpdated = false;
 
 	if ((tCur - m_lastSecond) >= CLOCKS_PER_SEC)
 	{
 		m_lastSecond += CLOCKS_PER_SEC;
 		m_iFPSCount = m_iCurrentFPS;
 		m_iCurrentFPS = 0;
+		m_bFPSUpdated = true;
 	}
 }

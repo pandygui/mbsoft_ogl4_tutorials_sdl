@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01.) Creating OpenGL 4.2 Window", "01.) Creating OpenGL 4.2 Window\01.) Creating OpenGL 4.2 Window.vcxproj", "{93AEB0E0-B6CB-4848-B7C8-48A11B9B0E8B}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -24,6 +24,20 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03.) Shaders Are Coming", "
 		{55AE3D72-7DE6-F19F-AEF2-9AE8CA26CF3D} = {55AE3D72-7DE6-F19F-AEF2-9AE8CA26CF3D}
 		{81CE8DAF-EBB2-4761-8E45-B71ABCCA8C68} = {81CE8DAF-EBB2-4761-8E45-B71ABCCA8C68}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "04.) Going 3D With Transformations", "04.) Going 3D With Transformations\04.) Going 3D With Transformations.vcxproj", "{FA240538-83A0-49EF-9C82-2FDAF341DBF8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55AE3D72-7DE6-F19F-AEF2-9AE8CA26CF3D} = {55AE3D72-7DE6-F19F-AEF2-9AE8CA26CF3D}
+		{81CE8DAF-EBB2-4761-8E45-B71ABCCA8C68} = {81CE8DAF-EBB2-4761-8E45-B71ABCCA8C68}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "05.) Indexed Drawing", "05.) Indexed Drawing\05.) Indexed Drawing.vcxproj", "{EDE35446-20DA-486C-AA03-C8F9F18C6F30}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55AE3D72-7DE6-F19F-AEF2-9AE8CA26CF3D} = {55AE3D72-7DE6-F19F-AEF2-9AE8CA26CF3D}
+		{81CE8DAF-EBB2-4761-8E45-B71ABCCA8C68} = {81CE8DAF-EBB2-4761-8E45-B71ABCCA8C68}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "06.) Textures", "06.) Textures\06.) Textures.vcxproj", "{69B2189C-1858-4740-9837-78A132607D08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +87,30 @@ Global
 		{FFC0F748-40AE-4360-AACC-F20CE0E5DE76}.Release|x64.Build.0 = Release|x64
 		{FFC0F748-40AE-4360-AACC-F20CE0E5DE76}.Release|x86.ActiveCfg = Release|Win32
 		{FFC0F748-40AE-4360-AACC-F20CE0E5DE76}.Release|x86.Build.0 = Release|Win32
+		{FA240538-83A0-49EF-9C82-2FDAF341DBF8}.Debug|x64.ActiveCfg = Debug|x64
+		{FA240538-83A0-49EF-9C82-2FDAF341DBF8}.Debug|x64.Build.0 = Debug|x64
+		{FA240538-83A0-49EF-9C82-2FDAF341DBF8}.Debug|x86.ActiveCfg = Debug|Win32
+		{FA240538-83A0-49EF-9C82-2FDAF341DBF8}.Debug|x86.Build.0 = Debug|Win32
+		{FA240538-83A0-49EF-9C82-2FDAF341DBF8}.Release|x64.ActiveCfg = Release|x64
+		{FA240538-83A0-49EF-9C82-2FDAF341DBF8}.Release|x64.Build.0 = Release|x64
+		{FA240538-83A0-49EF-9C82-2FDAF341DBF8}.Release|x86.ActiveCfg = Release|Win32
+		{FA240538-83A0-49EF-9C82-2FDAF341DBF8}.Release|x86.Build.0 = Release|Win32
+		{EDE35446-20DA-486C-AA03-C8F9F18C6F30}.Debug|x64.ActiveCfg = Debug|x64
+		{EDE35446-20DA-486C-AA03-C8F9F18C6F30}.Debug|x64.Build.0 = Debug|x64
+		{EDE35446-20DA-486C-AA03-C8F9F18C6F30}.Debug|x86.ActiveCfg = Debug|Win32
+		{EDE35446-20DA-486C-AA03-C8F9F18C6F30}.Debug|x86.Build.0 = Debug|Win32
+		{EDE35446-20DA-486C-AA03-C8F9F18C6F30}.Release|x64.ActiveCfg = Release|x64
+		{EDE35446-20DA-486C-AA03-C8F9F18C6F30}.Release|x64.Build.0 = Release|x64
+		{EDE35446-20DA-486C-AA03-C8F9F18C6F30}.Release|x86.ActiveCfg = Release|Win32
+		{EDE35446-20DA-486C-AA03-C8F9F18C6F30}.Release|x86.Build.0 = Release|Win32
+		{69B2189C-1858-4740-9837-78A132607D08}.Debug|x64.ActiveCfg = Debug|x64
+		{69B2189C-1858-4740-9837-78A132607D08}.Debug|x64.Build.0 = Debug|x64
+		{69B2189C-1858-4740-9837-78A132607D08}.Debug|x86.ActiveCfg = Debug|Win32
+		{69B2189C-1858-4740-9837-78A132607D08}.Debug|x86.Build.0 = Debug|Win32
+		{69B2189C-1858-4740-9837-78A132607D08}.Release|x64.ActiveCfg = Release|x64
+		{69B2189C-1858-4740-9837-78A132607D08}.Release|x64.Build.0 = Release|x64
+		{69B2189C-1858-4740-9837-78A132607D08}.Release|x86.ActiveCfg = Release|Win32
+		{69B2189C-1858-4740-9837-78A132607D08}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

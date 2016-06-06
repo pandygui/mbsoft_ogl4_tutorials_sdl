@@ -32,6 +32,7 @@ public:
 
 	float sof(float fVal);
 	void ResetFPS();
+	bool IsFPSUpdated();
 
 	// Actual code for rendering is inside these functions
 	void InitScene();
@@ -55,4 +56,5 @@ private:
 	int m_iViewportWidth, m_iViewportHeight; // Viewport parameters
 
 	void _UpdateFPS();
+	bool m_bFPSUpdated; // Flag that tells, that FPS counter has been updated (one second has passed)
 };

@@ -68,6 +68,8 @@ void CSDLOpenGLApp::HandleSystemEvents()
 				}
 			}
 		}
+		else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)
+			m_bExitRequested = true;
 	}
 }
 
@@ -87,6 +89,7 @@ void CSDLOpenGLApp::AppBody()
 	}
 
 	openGLWindow.ReleaseOpenGLControl();
+	SDL_Quit();
 }
 
 //--------------------------------------------------------------------

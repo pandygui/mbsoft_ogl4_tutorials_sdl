@@ -166,13 +166,13 @@ void CSDLOpenGLWindow::RenderScene()
 	// A little interaction for user
 
 	if (Keys::Key(SDL_SCANCODE_UP))
-		fCubeRotationSpeed -= sof(60.0f);
+		fCubeRotationSpeed -= sof(60.0f*PIover180);
 	if (Keys::Key(SDL_SCANCODE_DOWN))
-		fCubeRotationSpeed += sof(60.0f);
+		fCubeRotationSpeed += sof(60.0f*PIover180);
 	if (Keys::Key(SDL_SCANCODE_RIGHT))
-		fPyramidRotationSpeed += sof(60.0f);
+		fPyramidRotationSpeed += sof(60.0f*PIover180);
 	if (Keys::Key(SDL_SCANCODE_LEFT))
-		fPyramidRotationSpeed -= sof(60.0f);
+		fPyramidRotationSpeed -= sof(60.0f*PIover180);
 
 	fRotationAngleCube += sof(fCubeRotationSpeed);
 	fRotationAnglePyramid += sof(fPyramidRotationSpeed);
