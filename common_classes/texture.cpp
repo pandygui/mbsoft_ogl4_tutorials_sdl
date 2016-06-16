@@ -199,8 +199,13 @@ Result:	Frees all memory used by texture.
 
 void CTexture::DeleteTexture()
 {
+	if (m_uiTexture == 0)
+		return;
+
 	glDeleteSamplers(1, &m_uiSampler);
 	glDeleteTextures(1, &m_uiTexture);
+	m_uiSampler = 0;
+	m_uiTexture = 0;
 }
 
 /*-----------------------------------------------
