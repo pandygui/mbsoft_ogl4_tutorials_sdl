@@ -6,7 +6,7 @@
 
 CShader::CShader()
 {
-	bLoaded = false;
+	m_bLoaded = false;
 }
  
 /*-----------------------------------------------
@@ -31,26 +31,26 @@ bool CShader::LoadShader(string sFile, int a_iType)
 	for (int i = 0; i < sLines.size(); i++)
 		sProgram[i] = sLines[i].c_str();
 	
-	uiShader = glCreateShader(a_iType);
+	m_uiShader = glCreateShader(a_iType);
 
-	glShaderSource(uiShader, sLines.size(), sProgram, NULL);
-	glCompileShader(uiShader);
+	glShaderSource(m_uiShader, sLines.size(), sProgram, NULL);
+	glCompileShader(m_uiShader);
 
 	delete[] sProgram;
 
 	int iCompilationStatus;
-	glGetShaderiv(uiShader, GL_COMPILE_STATUS, &iCompilationStatus);
+	glGetShaderiv(m_uiShader, GL_COMPILE_STATUS, &iCompilationStatus);
 
 	if(iCompilationStatus == GL_FALSE)
 	{
 		char sInfoLog[1024];
 		int iLogLength;
-		glGetShaderInfoLog(uiShader, 1024, &iLogLength, sInfoLog);
+		glGetShaderInfoLog(m_uiShader, 1024, &iLogLength, sInfoLog);
 		SDL_Log("Error! Shader file %s wasn't compiled! The compiler returned:\n\n%s\n", sFile.c_str(), sInfoLog);
 		return false;
 	}
-	iType = a_iType;
-	bLoaded = true;
+	m_iType = a_iType;
+	m_bLoaded = true;
 
 	return true;
 }
@@ -130,7 +130,7 @@ Result:	True if shader was loaded and compiled.
 
 bool CShader::IsLoaded()
 {
-	return bLoaded;
+	return m_bLoaded;
 }
 
 /*-----------------------------------------------
@@ -145,7 +145,7 @@ Result:	Returns ID of a generated shader.
 
 GLuint CShader::GetShaderID()
 {
-	return uiShader;
+	return m_uiShader;
 }
 
 /*-----------------------------------------------
@@ -161,13 +161,13 @@ Result:	Deletes shader and frees memory in GPU.
 void CShader::DeleteShader()
 {
 	if(!IsLoaded())return;
-	bLoaded = false;
-	glDeleteShader(uiShader);
+	m_bLoaded = false;
+	glDeleteShader(m_uiShader);
 }
 
 CShaderProgram::CShaderProgram()
 {
-	bLinked = false;
+	m_bLinked = false;
 }
 
 /*-----------------------------------------------
@@ -182,7 +182,7 @@ Result:	Creates a new program.
 
 void CShaderProgram::CreateProgram()
 {
-	uiProgram = glCreateProgram();
+	m_uiProgram = glCreateProgram();
 }
 
 /*-----------------------------------------------
@@ -200,7 +200,7 @@ bool CShaderProgram::AddShaderToProgram(CShader* shShader)
 {
 	if(!shShader->IsLoaded())return false;
 
-	glAttachShader(uiProgram, shShader->GetShaderID());
+	glAttachShader(m_uiProgram, shShader->GetShaderID());
 
 	return true;
 }
@@ -217,20 +217,20 @@ Result:	Performs final linkage of OpenGL program.
 
 bool CShaderProgram::LinkProgram()
 {
-	glLinkProgram(uiProgram);
+	glLinkProgram(m_uiProgram);
 	int iLinkStatus;
-	glGetProgramiv(uiProgram, GL_LINK_STATUS, &iLinkStatus);
-	bLinked = iLinkStatus == GL_TRUE;
-	if(!bLinked)
+	glGetProgramiv(m_uiProgram, GL_LINK_STATUS, &iLinkStatus);
+	m_bLinked = iLinkStatus == GL_TRUE;
+	if(!m_bLinked)
 	{
 		char sInfoLog[1024];
 		int iLogLength;
-		glGetProgramInfoLog(uiProgram, 1024, &iLogLength, sInfoLog);
+		glGetProgramInfoLog(m_uiProgram, 1024, &iLogLength, sInfoLog);
 
 		SDL_Log("Error! Shader program wasn't linked! The linker returned:\n\n%s\n", sInfoLog);
 		return false;
 	}
-	return bLinked;
+	return m_bLinked;
 }
 
 /*-----------------------------------------------
@@ -245,11 +245,11 @@ Result:	Deletes program and frees memory on GPU.
 
 void CShaderProgram::DeleteProgram()
 {
-	if(!bLinked)
+	if(!m_bLinked)
 		return;
 
-	bLinked = false;
-	glDeleteProgram(uiProgram);
+	m_bLinked = false;
+	glDeleteProgram(m_uiProgram);
 }
 
 /*-----------------------------------------------
@@ -264,8 +264,8 @@ Result:	Tells OpenGL to use this program.
 
 void CShaderProgram::UseProgram()
 {
-	if(bLinked)
-		glUseProgram(uiProgram);
+	if(m_bLinked)
+		glUseProgram(m_uiProgram);
 }
 
 /*-----------------------------------------------
@@ -280,7 +280,7 @@ Result:	Returns OpenGL generated shader program ID.
 
 GLuint CShaderProgram::GetProgramID()
 {
-	return uiProgram;
+	return m_uiProgram;
 }
 
 /*-----------------------------------------------
@@ -298,13 +298,13 @@ Result:	These set of functions set most common
 
 void CShaderProgram::SetUniform(string sName, float* fValues, int iCount)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniform1fv(iLoc, iCount, fValues);
 }
 
 void CShaderProgram::SetUniform(string sName, const float fValue)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniform1fv(iLoc, 1, &fValue);
 }
 
@@ -312,37 +312,37 @@ void CShaderProgram::SetUniform(string sName, const float fValue)
 
 void CShaderProgram::SetUniform(string sName, glm::vec2* vVectors, int iCount)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniform2fv(iLoc, iCount, (GLfloat*)vVectors);
 }
 
 void CShaderProgram::SetUniform(string sName, const glm::vec2 vVector)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniform2fv(iLoc, 1, (GLfloat*)&vVector);
 }
 
 void CShaderProgram::SetUniform(string sName, glm::vec3* vVectors, int iCount)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniform3fv(iLoc, iCount, (GLfloat*)vVectors);
 }
 
 void CShaderProgram::SetUniform(string sName, const glm::vec3 vVector)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniform3fv(iLoc, 1, (GLfloat*)&vVector);
 }
 
 void CShaderProgram::SetUniform(string sName, glm::vec4* vVectors, int iCount)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniform4fv(iLoc, iCount, (GLfloat*)vVectors);
 }
 
 void CShaderProgram::SetUniform(string sName, const glm::vec4 vVector)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniform4fv(iLoc, 1, (GLfloat*)&vVector);
 }
 
@@ -350,13 +350,13 @@ void CShaderProgram::SetUniform(string sName, const glm::vec4 vVector)
 
 void CShaderProgram::SetUniform(string sName, glm::mat3* mMatrices, int iCount)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniformMatrix3fv(iLoc, iCount, false, (GLfloat*)mMatrices);
 }
 
 void CShaderProgram::SetUniform(string sName, const glm::mat3 mMatrix)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniformMatrix3fv(iLoc, 1, false, (GLfloat*)&mMatrix);
 }
 
@@ -364,13 +364,13 @@ void CShaderProgram::SetUniform(string sName, const glm::mat3 mMatrix)
 
 void CShaderProgram::SetUniform(string sName, glm::mat4* mMatrices, int iCount)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniformMatrix4fv(iLoc, iCount, false, (GLfloat*)mMatrices);
 }
 
 void CShaderProgram::SetUniform(string sName, const glm::mat4 mMatrix)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniformMatrix4fv(iLoc, 1, false, (GLfloat*)&mMatrix);
 }
 
@@ -378,13 +378,13 @@ void CShaderProgram::SetUniform(string sName, const glm::mat4 mMatrix)
 
 void CShaderProgram::SetUniform(string sName, int* iValues, int iCount)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniform1iv(iLoc, iCount, iValues);
 }
 
 void CShaderProgram::SetUniform(string sName, const int iValue)
 {
-	int iLoc = glGetUniformLocation(uiProgram, sName.c_str());
+	int iLoc = glGetUniformLocation(m_uiProgram, sName.c_str());
 	glUniform1i(iLoc, iValue);
 }
 

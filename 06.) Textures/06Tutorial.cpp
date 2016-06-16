@@ -5,7 +5,7 @@
 #include "../common_classes/texture.h"
 #include "../common_classes/vertexBufferObject.h"
 
-#include "static_geometry.h"
+#include "../common_classes/static_geometry.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -115,7 +115,7 @@ void DisplayTextureFiltersInfo()
 		"Bilinear on closest mipmap",
 		"Trilinear"
 	};
-	printf("Mag. Filter: %s, Min. Filter: %s", sInfoMinification[tSnow.GetMagnificationFilter()].c_str(),
+	printf("Mag. Filter: %s, Min. Filter: %s\n", sInfoMinification[tSnow.GetMagnificationFilter()].c_str(),
 		sInfoMagnification[tSnow.GetMinificationFilter() - 2].c_str());
 }
 
