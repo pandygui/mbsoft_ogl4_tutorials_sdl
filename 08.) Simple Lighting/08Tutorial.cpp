@@ -121,8 +121,8 @@ void CSDLOpenGLWindow::RenderScene()
 
 	// Set light properties
 
-	float fSine = sin(fSunAngle*3.1415 / 180.0);
-	glm::vec3 vSunPos(cos(fSunAngle*3.1415 / 180.0) * 70, sin(fSunAngle*3.1415 / 180.0) * 70, 0.0);
+	float fSine = sin(fSunAngle*PIover180);
+	glm::vec3 vSunPos(cos(fSunAngle*PIover180) * 70, sin(fSunAngle*PIover180) * 70, 0.0);
 
 	// We'll change color of skies depending on sun's position
 	glClearColor(0.0f, max(0.0f, 0.9f*fSine), max(0.0f, 0.9f*fSine), 1.0f);

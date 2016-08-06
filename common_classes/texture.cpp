@@ -50,7 +50,7 @@ Result:	Creates texture from provided data.
 
 /*---------------------------------------------*/
 
-void CTexture::CreateFromData(GLbyte* bData, int iWidth, int iHeight, int iBPP, GLenum format, bool bGenerateMipMaps)
+void CTexture::CreateFromData(void* bData, int iWidth, int iHeight, int iBPP, GLenum format, bool bGenerateMipMaps)
 {
 	// Generate an OpenGL texture ID for this texture
 	glGenTextures(1, &m_uiTexture);

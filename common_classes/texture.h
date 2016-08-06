@@ -27,7 +27,7 @@ public:
 	CTexture();
 
 	void CreateEmptyTexture(int iWidth, int iHeight, GLenum format);
-	void CreateFromData(GLbyte* bData, int iWidth, int iHeight, int iBPP, GLenum format, bool bGenerateMipMaps = false);
+	void CreateFromData(void* bData, int iWidth, int iHeight, int iBPP, GLenum format, bool bGenerateMipMaps = false);
 	
 	bool LoadTexture2D(string sPath, bool bGenerateMipMaps = false);
 	void BindTexture(int iTextureUnit = 0);

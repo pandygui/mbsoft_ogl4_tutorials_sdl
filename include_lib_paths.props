@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(SolutionDir)libraries\FreeImage;$(SolutionDir)libraries\glew\include;$(SolutionDir)libraries\glm;$(SolutionDir)libraries\SDL2\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)libraries\FreeImage;$(SolutionDir)libraries\glew\include;$(SolutionDir)libraries\glm;$(SolutionDir)libraries\SDL2\include;$(SolutionDir)libraries\freetype_2_6_4\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\$(PlatformName)\;$(LibraryPath)</LibraryPath>
     <_PropertySheetDisplayName>include_paths</_PropertySheetDisplayName>
   </PropertyGroup>
