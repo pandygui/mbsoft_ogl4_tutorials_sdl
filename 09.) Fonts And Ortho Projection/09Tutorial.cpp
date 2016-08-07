@@ -96,7 +96,7 @@ void CSDLOpenGLWindow::RenderScene()
 	// Render torus
 
 	spDirectionalLight.SetUniform("gSampler", 0);
-	spDirectionalLight.SetUniform("normalMatrix", glm::transpose(glm::inverse(mModelToCamera)));
+	spDirectionalLight.SetUniform("normalMatrix", glm::transpose(glm::inverse(glm::mat3(mModelToCamera))));
 	spDirectionalLight.SetUniform("modelViewMatrix", mModelView*mModelToCamera);
 	spDirectionalLight.SetUniform("vColor", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 

@@ -39,6 +39,8 @@ public:
 	void RenderScene();
 	void ReleaseScene();
 
+	SDL_Window* GetSDLWindow();
+
 private:
 	SDL_Window* m_window;
 	SDL_GLContext m_glContext;

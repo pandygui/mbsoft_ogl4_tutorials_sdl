@@ -208,6 +208,11 @@ bool CSDLOpenGLWindow::IsFPSUpdated()
 	return m_bFPSUpdated;
 }
 
+SDL_Window* CSDLOpenGLWindow::GetSDLWindow()
+{
+	return m_window;
+}
+
 //--------------------------------------------------------------------
 /// \brief Updates and recalculates FPS counter after frame
 //--------------------------------------------------------------------
