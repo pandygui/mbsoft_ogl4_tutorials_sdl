@@ -73,6 +73,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10.) Skybox", "10.) Skybox\
 		{81CE8DAF-EBB2-4761-8E45-B71ABCCA8C68} = {81CE8DAF-EBB2-4761-8E45-B71ABCCA8C68}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11.) Multitexturing", "11.) Multitexturing\11.) Multitexturing.vcxproj", "{6B62B409-CD2E-4314-9F5B-EA5DAEF7951C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55AE3D72-7DE6-F19F-AEF2-9AE8CA26CF3D} = {55AE3D72-7DE6-F19F-AEF2-9AE8CA26CF3D}
+		{5B557D9A-8810-4D2D-9A5A-982B5275D3DE} = {5B557D9A-8810-4D2D-9A5A-982B5275D3DE}
+		{81CE8DAF-EBB2-4761-8E45-B71ABCCA8C68} = {81CE8DAF-EBB2-4761-8E45-B71ABCCA8C68}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -185,6 +192,14 @@ Global
 		{6C1136DA-9383-442B-B728-CADA753FFF98}.Release|x64.Build.0 = Release|x64
 		{6C1136DA-9383-442B-B728-CADA753FFF98}.Release|x86.ActiveCfg = Release|Win32
 		{6C1136DA-9383-442B-B728-CADA753FFF98}.Release|x86.Build.0 = Release|Win32
+		{6B62B409-CD2E-4314-9F5B-EA5DAEF7951C}.Debug|x64.ActiveCfg = Debug|x64
+		{6B62B409-CD2E-4314-9F5B-EA5DAEF7951C}.Debug|x64.Build.0 = Debug|x64
+		{6B62B409-CD2E-4314-9F5B-EA5DAEF7951C}.Debug|x86.ActiveCfg = Debug|Win32
+		{6B62B409-CD2E-4314-9F5B-EA5DAEF7951C}.Debug|x86.Build.0 = Debug|Win32
+		{6B62B409-CD2E-4314-9F5B-EA5DAEF7951C}.Release|x64.ActiveCfg = Release|x64
+		{6B62B409-CD2E-4314-9F5B-EA5DAEF7951C}.Release|x64.Build.0 = Release|x64
+		{6B62B409-CD2E-4314-9F5B-EA5DAEF7951C}.Release|x86.ActiveCfg = Release|Win32
+		{6B62B409-CD2E-4314-9F5B-EA5DAEF7951C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

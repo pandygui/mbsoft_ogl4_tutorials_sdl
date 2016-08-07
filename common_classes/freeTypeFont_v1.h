@@ -25,6 +25,7 @@ public:
 	int GetTextWidth(string sText, int iPXSize);
 
 	void Print(string sText, int x, int y, int iPXSize = -1);
+	void PrintFormatted(int x, int y, int iPXSize, char* sText, ...);
 
 	void DeleteFont();
 

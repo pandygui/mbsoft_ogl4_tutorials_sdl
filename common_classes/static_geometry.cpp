@@ -118,7 +118,7 @@ glm::vec3 vCubeNormals[6] =
 
 glm::vec3 vGround[6] = 
 {
-	glm::vec3(-100, -10, -100), glm::vec3(50, -10, -100), glm::vec3(100, -10, 100), glm::vec3(100, -10, 100), glm::vec3(-100, -10, 100), glm::vec3(-100, -10, -100)
+	glm::vec3(-100, -10, -100), glm::vec3(100, -10, -100), glm::vec3(100, -10, 100), glm::vec3(100, -10, 100), glm::vec3(-100, -10, 100), glm::vec3(-100, -10, -100)
 };
 
 glm::vec3 vPyramidVertices[12] = 

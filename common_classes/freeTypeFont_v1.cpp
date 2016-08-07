@@ -145,6 +145,27 @@ bool CFreeTypeFont::LoadSystemFont(string sName, int iPXSize)
 
 /*-----------------------------------------------
 
+Name:	GetTextWidth
+
+Params:	sText - text to get width of
+iPXSize - it's printed size
+
+Result:	Returns width as number of pixels the
+text will occupy.
+
+/*---------------------------------------------*/
+
+int CFreeTypeFont::GetTextWidth(string sText, int iPXSize)
+{
+	int iResult = 0;
+	for (int i = 0; i < int(sText.size()); i++)
+		iResult += m_iAdvX[sText[i]];
+
+	return iResult*iPXSize / m_iLoadedPixelSize;
+}
+
+/*-----------------------------------------------
+
 Name:	print
 
 Params:	sText - text to print
@@ -190,6 +211,29 @@ void CFreeTypeFont::Print(string sText, int x, int y, int iPXSize)
 		iCurX += (m_iAdvX[iIndex]-m_iBearingX[iIndex])*iPXSize/m_iLoadedPixelSize;
 	}
 	glDisable(GL_BLEND);
+}
+
+/*-----------------------------------------------
+
+Name:	PrintFormatted
+
+Params:	x, y - 2D position
+iPXSize - printed text size
+sText - text to print
+
+Result:	Prints formatted text at specified position
+with specified pixel size.
+
+/*---------------------------------------------*/
+
+void CFreeTypeFont::PrintFormatted(int x, int y, int iPXSize, char* sText, ...)
+{
+	char buf[512];
+	va_list ap;
+	va_start(ap, sText);
+	vsprintf(buf, sText, ap);
+	va_end(ap);
+	Print(buf, x, y, iPXSize);
 }
 
 /*-----------------------------------------------

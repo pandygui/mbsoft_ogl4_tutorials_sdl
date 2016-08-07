@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6C1136DA-9383-442B-B728-CADA753FFF98}</ProjectGuid>
+    <ProjectGuid>{6B62B409-CD2E-4314-9F5B-EA5DAEF7951C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My10Skybox</RootNamespace>
+    <RootNamespace>My11Multitexturing</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -76,7 +76,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -172,7 +171,7 @@
     <ClCompile Include="..\common_classes\static_geometry.cpp" />
     <ClCompile Include="..\common_classes\texture.cpp" />
     <ClCompile Include="..\common_classes\vertexBufferObject.cpp" />
-    <ClCompile Include="10Tutorial.cpp" />
+    <ClCompile Include="11Tutorial.cpp" />
     <ClCompile Include="data.cpp" />
     <ClCompile Include="main_win.cpp" />
   </ItemGroup>

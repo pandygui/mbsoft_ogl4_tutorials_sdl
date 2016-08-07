@@ -15,8 +15,8 @@ void LoadShaders()
 {
 	// Load shaders and create shader programs
 
-	shShaders[0].LoadShader("data\\shaders\\tut09\\shader.vert", GL_VERTEX_SHADER);
-	shShaders[1].LoadShader("data\\shaders\\tut09\\shader.frag", GL_FRAGMENT_SHADER);
+	shShaders[0].LoadShader("data\\shaders\\tut11\\shader.vert", GL_VERTEX_SHADER);
+	shShaders[1].LoadShader("data\\shaders\\tut11\\shader.frag", GL_FRAGMENT_SHADER);
 	shShaders[2].LoadShader("data\\shaders\\tut09\\ortho2D.vert", GL_VERTEX_SHADER);
 	shShaders[3].LoadShader("data\\shaders\\tut09\\ortho2D.frag", GL_FRAGMENT_SHADER);
 	shShaders[4].LoadShader("data\\shaders\\tut09\\font2D.frag", GL_FRAGMENT_SHADER);
@@ -43,7 +43,7 @@ void LoadShaders()
 
 void LoadTextures()
 {
-	string sTextureNames[] = { "rust.jpg" };
+	string sTextureNames[] = { "grass.jpg", "aardfdry256_1.jpg", "crate.jpg", "metalplate.jpg" };
 
 	for (int i = 0; i < NUMTEXTURES; i++)
 	{

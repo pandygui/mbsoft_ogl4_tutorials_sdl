@@ -45,7 +45,7 @@ void LoadTextures()
 {
 	string sTextureNames[] = { "grass.jpg", "crate.jpg", "metalplate.jpg" };
 
-	for (int i = 0; i < NUMTEXTURES; i++) // I know that FOR cycle is useless now, but it was easier to rewrite :)
+	for (int i = 0; i < NUMTEXTURES; i++)
 	{
 		tTextures[i].LoadTexture2D("data\\textures\\" + sTextureNames[i], true);
 		tTextures[i].SetFiltering(TEXTURE_FILTER_MAG_BILINEAR, TEXTURE_FILTER_MIN_BILINEAR_MIPMAP);
