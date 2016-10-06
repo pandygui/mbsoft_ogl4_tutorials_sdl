@@ -19,6 +19,8 @@ Purpose: Wraps FreeType fonts and
 class CFreeTypeFont
 {
 public:
+	CFreeTypeFont();
+
 	bool LoadFont(string sFile, int iPXSize);
 	bool LoadSystemFont(string sName, int iPXSize);
 
@@ -31,7 +33,6 @@ public:
 
 	void SetShaderProgram(CShaderProgram* a_shShaderProgram);
 
-	CFreeTypeFont();
 private:
 	void CreateChar(int iIndex);
 

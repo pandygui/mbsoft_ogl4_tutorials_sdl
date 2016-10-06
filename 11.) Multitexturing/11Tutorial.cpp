@@ -179,7 +179,7 @@ void CSDLOpenGLWindow::RenderScene()
 			mModelToCamera = glm::translate(glm::mat4(1.0), vPos);
 			mModelToCamera = glm::scale(mModelToCamera, glm::vec3(8.0f, 8.0f, 8.0f));
 			// We need to transform normals properly, it's done by transpose of inverse matrix of rotations and scales
-			spDirectionalLight.SetUniform("normalMatrix", glm::transpose(glm::inverse(mModelToCamera)));
+			spDirectionalLight.SetUniform("normalMatrix", glm::transpose(glm::inverse(glm::mat3(mModelToCamera))));
 			spDirectionalLight.SetUniform("modelViewMatrix", mModelView*mModelToCamera);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
