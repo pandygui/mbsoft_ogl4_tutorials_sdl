@@ -36,7 +36,8 @@ bool CSDLOpenGLWindow::CreateOpenGLWindow(string sWindowTitle, bool bFullScreen,
 	{
 		SDL_DisplayMode mode;
 		SDL_GetCurrentDisplayMode(0, &mode);
-		m_window = SDL_CreateWindow(sWindowTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, mode.w, mode.h, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP);
+		m_window = SDL_CreateWindow(sWindowTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, mode.w, mode.h, SDL_WINDOW_OPENGL);
+		SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 	}
 	SDL_ClearError();
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, iMajorVersion);
