@@ -10,4 +10,7 @@ extern glm::vec3 vGround[6];
 extern glm::vec3 vPyramidVertices[12];
 extern glm::vec2 vPyramidTexCoords[3];
 
+extern glm::vec3 vBuildingNormals[4];
+extern glm::vec3 vBuilding[24];
+
 int GenerateTorus(CVertexBufferObject &vboDest, float fRadius, float fTubeRadius, int iSubDivAround, int iSubDivTube);

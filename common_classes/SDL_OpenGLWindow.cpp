@@ -28,7 +28,7 @@ CSDLOpenGLWindow::CSDLOpenGLWindow()
 /// \param iMinorVersion Minor version of OpenGL
 //--------------------------------------------------------------------
 
-bool CSDLOpenGLWindow::CreateOpenGLWindow(string sWindowTitle, bool bFullScreen, int iMajorVersion, int iMinorVersion)
+bool CSDLOpenGLWindow::CreateOpenGLWindow(std::string sWindowTitle, bool bFullScreen, int iMajorVersion, int iMinorVersion)
 {
 	if(!bFullScreen)
 		m_window = SDL_CreateWindow(sWindowTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);

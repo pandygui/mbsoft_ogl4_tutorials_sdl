@@ -9,7 +9,7 @@ class CSDLOpenGLWindow
 public:
 	CSDLOpenGLWindow();
 
-	bool CreateOpenGLWindow(string sWindowTitle, bool bFullScreen, int iMajorVersion, int iMinorVersion);
+	bool CreateOpenGLWindow(std::string sWindowTitle, bool bFullScreen, int iMajorVersion, int iMinorVersion);
 	
 	void ResizeOpenGLViewportFull();
 	void SetProjection3D(float fFOV, float fAspectRatio, float fNear, float fFar);

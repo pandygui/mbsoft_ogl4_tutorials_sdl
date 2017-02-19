@@ -87,7 +87,7 @@ void CSDLOpenGLWindow::InitScene()
 	ftFont.LoadSystemFont("arial.ttf", 32);
 	ftFont.SetShaderProgram(&spFont2D);
 
-	cCamera = CFlyingCamera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), 25.0f, 0.1f);
+	cCamera = CFlyingCamera(glm::vec3(0.0f, 10.0f, 50.0f), glm::vec3(0.0f, 10.0f, 49.0f), glm::vec3(0.0f, 1.0f, 0.0f), 25.0f, 0.1f);
 	cCamera.SetMovingKeys(SDL_SCANCODE_W, SDL_SCANCODE_S, SDL_SCANCODE_A, SDL_SCANCODE_D);
 
 	sbMainSkybox.LoadSkybox("data\\skyboxes\\jajdesert1\\", "jajdesert1_ft.jpg", "jajdesert1_bk.jpg", "jajdesert1_lf.jpg", "jajdesert1_rt.jpg", "jajdesert1_up.jpg", "jajdesert1_dn.jpg");
@@ -115,6 +115,7 @@ void CSDLOpenGLWindow::RenderScene()
 	spDirectionalLight.SetUniform("sunLight.vColor", glm::vec3(1.0f, 1.0f, 1.0f));
 	spDirectionalLight.SetUniform("sunLight.fAmbientIntensity", 1.0f); // Full light for skybox
 	spDirectionalLight.SetUniform("sunLight.vDirection", glm::vec3(0, -1, 0));
+	spDirectionalLight.SetUniform("sunLight.fStrength", 1.0f);
 
 	spDirectionalLight.SetUniform("projectionMatrix", GetProjectionMatrix());
 
@@ -237,7 +238,7 @@ void CSDLOpenGLWindow::RenderScene()
 	if (Keys::Key(SDL_SCANCODE_G))fDryAmount -= sof(0.2f);
 	if (Keys::Key(SDL_SCANCODE_H))fDryAmount += sof(0.2f);
 
-	fDryAmount = min(max(0.0f, fDryAmount), 1.0f);
+	fDryAmount = std::min(std::max(0.0f, fDryAmount), 1.0f);
 }
 
 //--------------------------------------------------------------------

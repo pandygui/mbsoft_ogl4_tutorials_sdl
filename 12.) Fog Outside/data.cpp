@@ -45,7 +45,7 @@ void LoadShaders()
 
 void LoadTextures()
 {
-	string sTextureNames[] = { "grass.jpg", "crate.jpg", "metalplate.jpg" };
+	std::string sTextureNames[] = { "grass.jpg", "crate.jpg", "metalplate.jpg" };
 
 	for (int i = 0; i < NUMTEXTURES; i++)
 	{

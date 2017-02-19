@@ -111,6 +111,7 @@ void CSDLOpenGLWindow::RenderScene()
 	spDirectionalLight.SetUniform("sunLight.vColor", glm::vec3(1.0f, 1.0f, 1.0f));
 	spDirectionalLight.SetUniform("sunLight.fAmbientIntensity", 1.0f); // Full light for skybox
 	spDirectionalLight.SetUniform("sunLight.vDirection", glm::vec3(0, -1, 0));
+	spDirectionalLight.SetUniform("sunLight.fStrength", 1.0f);
 
 	spDirectionalLight.SetUniform("projectionMatrix", GetProjectionMatrix());
 	spDirectionalLight.SetUniform("gSampler", 0);

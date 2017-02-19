@@ -25,7 +25,7 @@ public:
 private:
 	GLuint m_uiBuffer;
 	int m_iBufferType;
-	vector<unsigned char> data;
+	std::vector<unsigned char> data;
 
 	bool m_bDataUploaded;
 };

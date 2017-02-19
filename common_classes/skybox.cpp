@@ -12,7 +12,7 @@ Result:	Loads skybox and creates VAO and VBO for it.
 
 /*---------------------------------------------*/
 
-void CSkybox::LoadSkybox(string a_sDirectory, string a_sFront, string a_sBack, string a_sLeft, string a_sRight, string a_sTop, string a_sBottom)
+void CSkybox::LoadSkybox(std::string a_sDirectory, std::string a_sFront, std::string a_sBack, std::string a_sLeft, std::string a_sRight, std::string a_sTop, std::string a_sBottom)
 {
 	tTextures[0].LoadTexture2D(a_sDirectory+a_sFront);
 	tTextures[1].LoadTexture2D(a_sDirectory+a_sBack);

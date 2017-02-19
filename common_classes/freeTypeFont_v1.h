@@ -21,12 +21,12 @@ class CFreeTypeFont
 public:
 	CFreeTypeFont();
 
-	bool LoadFont(string sFile, int iPXSize);
-	bool LoadSystemFont(string sName, int iPXSize);
+	bool LoadFont(std::string sFile, int iPXSize);
+	bool LoadSystemFont(std::string sName, int iPXSize);
 
-	int GetTextWidth(string sText, int iPXSize);
+	int GetTextWidth(std::string sText, int iPXSize);
 
-	void Print(string sText, int x, int y, int iPXSize = -1);
+	void Print(std::string sText, int x, int y, int iPXSize = -1);
 	void PrintFormatted(int x, int y, int iPXSize, char* sText, ...);
 
 	void DeleteFont();

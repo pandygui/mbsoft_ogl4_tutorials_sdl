@@ -19,7 +19,7 @@ int iTorusFaces1, iTorusFaces2;
 CVertexBufferObject vboSceneObjects;
 GLuint uiVAOs[1]; // Only one VAO now
 
-CShader shVertex, shFragment;
+CShader shVertex, shFragment, shDirLight;
 CShaderProgram spDirectionalLight;
 
 CTexture tTextures[4];
@@ -81,15 +81,17 @@ void CSDLOpenGLWindow::InitScene()
 
 	shVertex.LoadShader("data\\shaders\\tut08\\shader.vert", GL_VERTEX_SHADER);
 	shFragment.LoadShader("data\\shaders\\tut08\\shader.frag", GL_FRAGMENT_SHADER);
+	shDirLight.LoadShader("data\\shaders\\common\\directionalLight.frag", GL_FRAGMENT_SHADER);
 
 	spDirectionalLight.CreateProgram();
 		spDirectionalLight.AddShaderToProgram(&shVertex);
 		spDirectionalLight.AddShaderToProgram(&shFragment);
+		spDirectionalLight.AddShaderToProgram(&shDirLight);
 	spDirectionalLight.LinkProgram();
 
 	// Load textures
 
-	string sTextureNames[] = { "ground.jpg", "box.jpg", "rust.jpg", "sun.jpg" };
+	std::string sTextureNames[] = { "ground.jpg", "box.jpg", "rust.jpg", "sun.jpg" };
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -125,10 +127,11 @@ void CSDLOpenGLWindow::RenderScene()
 	glm::vec3 vSunPos(cos(fSunAngle*PIover180) * 70, sin(fSunAngle*PIover180) * 70, 0.0);
 
 	// We'll change color of skies depending on sun's position
-	glClearColor(0.0f, max(0.0f, 0.9f*fSine), max(0.0f, 0.9f*fSine), 1.0f);
+	glClearColor(0.0f, std::max(0.0f, 0.9f*fSine), std::max(0.0f, 0.9f*fSine), 1.0f);
 
 	spDirectionalLight.SetUniform("sunLight.vColor", glm::vec3(1.0f, 1.0f, 1.0f));
 	spDirectionalLight.SetUniform("sunLight.fAmbientIntensity", 0.25f);
+	spDirectionalLight.SetUniform("sunLight.fStrength", 1.0f);
 	spDirectionalLight.SetUniform("sunLight.vDirection", -glm::normalize(vSunPos));
 
 	spDirectionalLight.SetUniform("projectionMatrix", GetProjectionMatrix());

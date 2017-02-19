@@ -17,23 +17,25 @@ void LoadShaders()
 
 	shShaders[0].LoadShader("data\\shaders\\tut11\\shader.vert", GL_VERTEX_SHADER);
 	shShaders[1].LoadShader("data\\shaders\\tut11\\shader.frag", GL_FRAGMENT_SHADER);
-	shShaders[2].LoadShader("data\\shaders\\tut09\\ortho2D.vert", GL_VERTEX_SHADER);
-	shShaders[3].LoadShader("data\\shaders\\tut09\\ortho2D.frag", GL_FRAGMENT_SHADER);
-	shShaders[4].LoadShader("data\\shaders\\tut09\\font2D.frag", GL_FRAGMENT_SHADER);
+	shShaders[2].LoadShader("data\\shaders\\common\\directionalLight.frag", GL_FRAGMENT_SHADER);
+	shShaders[3].LoadShader("data\\shaders\\tut09\\ortho2D.vert", GL_VERTEX_SHADER);
+	shShaders[4].LoadShader("data\\shaders\\tut09\\ortho2D.frag", GL_FRAGMENT_SHADER);
+	shShaders[5].LoadShader("data\\shaders\\tut09\\font2D.frag", GL_FRAGMENT_SHADER);
 
 	spDirectionalLight.CreateProgram();
 		spDirectionalLight.AddShaderToProgram(&shShaders[0]);
 		spDirectionalLight.AddShaderToProgram(&shShaders[1]);
+		spDirectionalLight.AddShaderToProgram(&shShaders[2]);
 	spDirectionalLight.LinkProgram();
 
 	spOrtho2D.CreateProgram();
-		spOrtho2D.AddShaderToProgram(&shShaders[2]);
 		spOrtho2D.AddShaderToProgram(&shShaders[3]);
+		spOrtho2D.AddShaderToProgram(&shShaders[4]);
 	spOrtho2D.LinkProgram();
 
 	spFont2D.CreateProgram();
-		spFont2D.AddShaderToProgram(&shShaders[2]);
-		spFont2D.AddShaderToProgram(&shShaders[4]);
+		spFont2D.AddShaderToProgram(&shShaders[3]);
+		spFont2D.AddShaderToProgram(&shShaders[5]);
 	spFont2D.LinkProgram();
 }
 
@@ -43,7 +45,7 @@ void LoadShaders()
 
 void LoadTextures()
 {
-	string sTextureNames[] = { "grass.jpg", "aardfdry256_1.jpg", "crate.jpg", "metalplate.jpg" };
+	std::string sTextureNames[] = { "grass.jpg", "aardfdry256_1.jpg", "crate.jpg", "metalplate.jpg" };
 
 	for (int i = 0; i < NUMTEXTURES; i++)
 	{

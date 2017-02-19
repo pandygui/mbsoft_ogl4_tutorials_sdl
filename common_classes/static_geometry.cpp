@@ -134,3 +134,23 @@ glm::vec3 vPyramidVertices[12] =
 };
 
 glm::vec2 vPyramidTexCoords[3] = {glm::vec2(0.5f, 1.0f), glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 0.0f)};
+
+glm::vec3 vBuildingNormals[4] =
+{
+	glm::vec3(0.0f, 0.0f, 1.0f),
+	glm::vec3(1.0f, 0.0f, 0.0f),
+	glm::vec3(-1.0f, 0.0f, 0.0f),
+	glm::vec3(0.0f, -1.0f, 0.0f)
+};
+
+glm::vec3 vBuilding[24] =
+{
+	// Back face
+	glm::vec3(-75.0f, 75.0f, -75.0f), glm::vec3(75.0f, 75.0f, -75.0f), glm::vec3(75.0f, 0.0f, -75.0f), glm::vec3(75.0f, 0.0f, -75.0f), glm::vec3(-75.0f, 0.0f, -75.0f), glm::vec3(-75.0f, 75.0f, -75.0f),
+	// Left face
+	glm::vec3(-75.0f, 75.0f, -75.0f), glm::vec3(-75.0f, 75.0f, 75.0f), glm::vec3(-75.0f, 0.0f, 75.0f), glm::vec3(-75.0f, 0.0f, 75.0f), glm::vec3(-75.0f, 0.0f, -75.0f), glm::vec3(-75.0f, 75.0f, -75.0f),
+	// Right face
+	glm::vec3(75.0f, 75.0f, 75.0f), glm::vec3(75.0f, 75.0f, -75.0f), glm::vec3(75.0f, 0.0f, -75.0f), glm::vec3(75.0f, 0.0f, -75.0f), glm::vec3(75.0f, 0.0f, 75.0f), glm::vec3(75.0f, 75.0f, 75.0f),
+	// Top face
+	glm::vec3(-75.0f, 75.0f, -75.0f), glm::vec3(75.0f, 75.0f, -75.0f), glm::vec3(75.0f, 75.0f, 75.0f), glm::vec3(75.0f, 75.0f, 75.0f), glm::vec3(-75.0f, 75.0f, 75.0f), glm::vec3(-75.0f, 75.0f, -75.0f)
+};

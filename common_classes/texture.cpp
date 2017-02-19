@@ -83,44 +83,52 @@ Result:	Loads texture from a file, supports most
 
 /*---------------------------------------------*/
 
-bool CTexture::LoadTexture2D(string sPath, bool bGenerateMipMaps)
+bool CTexture::LoadTexture2D(std::string sPath, bool bGenerateMipMaps)
 {
 	FREE_IMAGE_FORMAT fif = FIF_UNKNOWN;
 	FIBITMAP* dib(0);
 
-	fif = FreeImage_GetFileType(sPath.c_str(), 0); // Check the file signature and deduce its format
+	try
+	{
+		fif = FreeImage_GetFileType(sPath.c_str(), 0); // Check the file signature and deduce its format
 
-	if(fif == FIF_UNKNOWN) // If still unknown, try to guess the file format from the file extension
-		fif = FreeImage_GetFIFFromFilename(sPath.c_str());
-	
-	if(fif == FIF_UNKNOWN) // If still unknown, return failure
+		if (fif == FIF_UNKNOWN) // If still unknown, try to guess the file format from the file extension
+			fif = FreeImage_GetFIFFromFilename(sPath.c_str());
+
+		if (fif == FIF_UNKNOWN) // If still unknown, return failure
+			throw 1;
+
+		if (FreeImage_FIFSupportsReading(fif)) // Check if the plugin has reading capabilities and load the file
+			dib = FreeImage_Load(fif, sPath.c_str());
+		if (!dib)
+			throw 2;
+
+		unsigned char* bDataPointer = FreeImage_GetBits(dib); // Retrieve the image data
+
+		// If somehow one of these failed (they shouldn't), return failure
+		if (bDataPointer == NULL || FreeImage_GetWidth(dib) == 0 || FreeImage_GetHeight(dib) == 0)
+			throw 3;
+
+		GLenum format = 0;
+		int bpp = FreeImage_GetBPP(dib);
+		if (bpp == 32)format = GL_RGBA;
+		else if (bpp == 24)format = GL_BGR;
+		else if (bpp == 8)format = GL_LUMINANCE;
+
+		if (format == 0)
+			throw 4;
+
+		CreateFromData(bDataPointer, FreeImage_GetWidth(dib), FreeImage_GetHeight(dib), FreeImage_GetBPP(dib), format, bGenerateMipMaps);
+
+		FreeImage_Unload(dib);
+
+		m_sPath = sPath;
+	}
+	catch (int&)
+	{
+		printf("Couldn't load texture %s!\n", sPath.c_str());
 		return false;
-
-	if(FreeImage_FIFSupportsReading(fif)) // Check if the plugin has reading capabilities and load the file
-		dib = FreeImage_Load(fif, sPath.c_str());
-	if(!dib)
-		return false;
-
-	GLbyte* bDataPointer = (GLbyte*)FreeImage_GetBits(dib); // Retrieve the image data
-
-	// If somehow one of these failed (they shouldn't), return failure
-	if(bDataPointer == NULL || FreeImage_GetWidth(dib) == 0 || FreeImage_GetHeight(dib) == 0)
-		return false;
-
-	GLenum format = 0;
-	int bada = FreeImage_GetBPP(dib);
-	if(FreeImage_GetBPP(dib) == 32)format = GL_RGBA;
-	if(FreeImage_GetBPP(dib) == 24)format = GL_BGR;
-	if(FreeImage_GetBPP(dib) == 8)format = GL_LUMINANCE;
-	if(format != 0)
-	CreateFromData(bDataPointer, FreeImage_GetWidth(dib), FreeImage_GetHeight(dib), FreeImage_GetBPP(dib), format, bGenerateMipMaps);
-	
-	FreeImage_Unload(dib);
-
-	if(format == 0)
-		return false;
-
-	m_sPath = sPath;
+	}
 
 	return true; // Success
 }
@@ -248,7 +256,7 @@ GLuint CTexture::GetTextureID()
 	return m_uiTexture;
 }
 
-string CTexture::GetPath()
+std::string CTexture::GetPath()
 {
 	return m_sPath;
 }

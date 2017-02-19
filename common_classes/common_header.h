@@ -11,8 +11,6 @@
 #include <map>
 #include <set>
 
-using namespace std;
-
 #include <gl/glew.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>

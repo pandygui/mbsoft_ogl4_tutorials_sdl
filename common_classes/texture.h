@@ -29,7 +29,7 @@ public:
 	void CreateEmptyTexture(int iWidth, int iHeight, GLenum format);
 	void CreateFromData(void* bData, int iWidth, int iHeight, int iBPP, GLenum format, bool bGenerateMipMaps = false);
 	
-	bool LoadTexture2D(string sPath, bool bGenerateMipMaps = false);
+	bool LoadTexture2D(std::string sPath, bool bGenerateMipMaps = false);
 	void BindTexture(int iTextureUnit = 0);
 
 	void SetFiltering(ETextureFiltering a_tfMagnification, ETextureFiltering a_tfMinification);
@@ -44,7 +44,7 @@ public:
 	int GetBPP();
 
 	GLuint GetTextureID();
-	string GetPath();
+	std::string GetPath();
 
 	void DeleteTexture();
 private:
@@ -55,5 +55,5 @@ private:
 
 	ETextureFiltering m_tfMinification, m_tfMagnification;
 
-	string m_sPath;
+	std::string m_sPath;
 };

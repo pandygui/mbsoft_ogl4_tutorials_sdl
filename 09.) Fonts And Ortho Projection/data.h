@@ -5,7 +5,7 @@
 
 // Shader data
 
-#define NUMSHADERS 5
+#define NUMSHADERS 6
 extern CShader shShaders[NUMSHADERS];
 extern CShaderProgram spDirectionalLight, spOrtho2D, spFont2D;
 

@@ -102,12 +102,12 @@ const float PIover180 = 3.1415f / 180.0f;
 
 void DisplayTextureFiltersInfo()
 {
-	string sInfoMinification[] =
+	std::string sInfoMinification[] =
 	{
 		"Nearest",
 		"Bilinear"
 	};
-	string sInfoMagnification[] =
+	std::string sInfoMagnification[] =
 	{
 		"Nearest",
 		"Bilinear",

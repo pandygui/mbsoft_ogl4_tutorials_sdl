@@ -87,6 +87,7 @@ void CSDLOpenGLWindow::RenderScene()
 	spDirectionalLight.SetUniform("sunLight.vColor", glm::vec3(1.0f, 1.0f, 1.0f));
 	spDirectionalLight.SetUniform("sunLight.fAmbientIntensity", 0.25f);
 	spDirectionalLight.SetUniform("sunLight.vDirection", glm::vec3(0, -1, 0));
+	spDirectionalLight.SetUniform("sunLight.fStrength", 1.0f);
 
 	spDirectionalLight.SetUniform("projectionMatrix", GetProjectionMatrix());
 
@@ -140,7 +141,6 @@ void CSDLOpenGLWindow::ReleaseScene()
 
 	spDirectionalLight.DeleteProgram();
 	spFont2D.DeleteProgram();
-	spOrtho2D.DeleteProgram();
 
 	for (int i = 0; i < NUMSHADERS; i++)
 		shShaders[i].DeleteShader();

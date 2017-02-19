@@ -179,7 +179,6 @@ void CSDLOpenGLWindow::RenderScene()
 		iCurDir = (iCurDir + 1) % 4;
 	}
 
-
 	// Render 3 rotated tori to create interesting object
 
 	tTextures[2].BindTexture();

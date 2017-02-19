@@ -7,14 +7,9 @@ out vec4 outputColor;
 uniform sampler2D gSampler;
 uniform vec4 vColor;
 
-struct SimpleDirectionalLight
-{
-	vec3 vColor;
-	vec3 vDirection;
-	float fAmbientIntensity;
-};
+#include "../common/directionalLight.frag"
 
-uniform SimpleDirectionalLight sunLight;
+uniform DirectionalLight sunLight;
 
 void main()
 {
